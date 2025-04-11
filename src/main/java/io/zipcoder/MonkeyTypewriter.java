@@ -21,6 +21,28 @@ public class MonkeyTypewriter {
                 "evil, in the superlative degree of comparison only.";
 
         // Do all of the Monkey / Thread building here
+        Thread monkey1 = new Thread(new UnsafeCopier(introduction));
+        Thread monkey2 = new Thread(new UnsafeCopier(introduction));
+        Thread monkey3 = new Thread(new UnsafeCopier(introduction));
+        Thread monkey4 = new Thread(new UnsafeCopier(introduction));
+        Thread monkey5 = new Thread(new UnsafeCopier(introduction));
+        monkey1.start();
+        monkey2.start();
+        monkey3.start();
+        monkey4.start();
+        monkey5.start();
+
+        Thread monkey6 = new Thread(new SafeCopier(introduction));
+        Thread monkey7 = new Thread(new SafeCopier(introduction));
+        Thread monkey8 = new Thread(new SafeCopier(introduction));
+        Thread monkey9 = new Thread(new SafeCopier(introduction));
+        Thread monkey10 = new Thread(new SafeCopier(introduction));
+        monkey6.start();
+        monkey7.start();
+        monkey8.start();
+        monkey9.start();
+        monkey10.start();
+
         // For each Copier(one safe and one unsafe), create and start 5 monkeys copying the introduction to
         // A Tale Of Two Cities.
 
@@ -34,5 +56,15 @@ public class MonkeyTypewriter {
         }
 
         // Print out the copied versions here.
+        System.out.println(monkey1.isAlive());
+        System.out.println(monkey2);
+        System.out.println(monkey3);
+        System.out.println(monkey4);
+        System.out.println(monkey5);
+        System.out.println(monkey6.isAlive());
+        System.out.println(monkey7);
+        System.out.println(monkey8);
+        System.out.println(monkey9);
+        System.out.println(monkey10);
     }
 }
