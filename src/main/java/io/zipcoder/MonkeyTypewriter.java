@@ -21,22 +21,27 @@ public class MonkeyTypewriter {
                 "evil, in the superlative degree of comparison only.";
 
         // Do all of the Monkey / Thread building here
-        Thread monkey1 = new Thread(new UnsafeCopier(introduction));
-        Thread monkey2 = new Thread(new UnsafeCopier(introduction));
-        Thread monkey3 = new Thread(new UnsafeCopier(introduction));
-        Thread monkey4 = new Thread(new UnsafeCopier(introduction));
-        Thread monkey5 = new Thread(new UnsafeCopier(introduction));
+
+
+        UnsafeCopier unsafeCopier = new UnsafeCopier(introduction);
+        Thread monkey1 = new Thread(unsafeCopier);
+        Thread monkey2 = new Thread(unsafeCopier);
+        Thread monkey3 = new Thread(unsafeCopier);
+        Thread monkey4 = new Thread(unsafeCopier);
+        Thread monkey5 = new Thread(unsafeCopier);
         monkey1.start();
         monkey2.start();
         monkey3.start();
         monkey4.start();
         monkey5.start();
 
-        Thread monkey6 = new Thread(new SafeCopier(introduction));
-        Thread monkey7 = new Thread(new SafeCopier(introduction));
-        Thread monkey8 = new Thread(new SafeCopier(introduction));
-        Thread monkey9 = new Thread(new SafeCopier(introduction));
-        Thread monkey10 = new Thread(new SafeCopier(introduction));
+        SafeCopier safeCopier = new SafeCopier(introduction);
+
+        Thread monkey6 = new Thread(safeCopier);
+        Thread monkey7 = new Thread(safeCopier);
+        Thread monkey8 = new Thread(safeCopier);
+        Thread monkey9 = new Thread(safeCopier);
+        Thread monkey10 = new Thread(safeCopier);
         monkey6.start();
         monkey7.start();
         monkey8.start();
@@ -56,15 +61,19 @@ public class MonkeyTypewriter {
         }
 
         // Print out the copied versions here.
+        System.out.println("Unsafe Copy");
+        System.out.println(unsafeCopier.copied);
+        System.out.println("Safe Copy");
+        System.out.println(safeCopier.copied);
         System.out.println(monkey1.isAlive());
-        System.out.println(monkey2);
-        System.out.println(monkey3);
-        System.out.println(monkey4);
-        System.out.println(monkey5);
+        System.out.println(monkey2.isAlive());
+        System.out.println(monkey3.isAlive());
+        System.out.println(monkey4.isAlive());
+        System.out.println(monkey5.isAlive());
         System.out.println(monkey6.isAlive());
-        System.out.println(monkey7);
-        System.out.println(monkey8);
-        System.out.println(monkey9);
-        System.out.println(monkey10);
+        System.out.println(monkey7.isAlive());
+        System.out.println(monkey8.isAlive());
+        System.out.println(monkey9.isAlive());
+        System.out.println(monkey10.isAlive());
     }
 }
